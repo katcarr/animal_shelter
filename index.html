@@ -1,9 +1,68 @@
-<!DOCTYPE html>
-<html>
+`<!DOCTYPE html>
+<html ng-app="animalShelter">
   <head>
     <title>Animal Shelter</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="services/AnimalsFactory.js"></script>
+    <script src="controllers/AdoptionsController.js"></script>
+    <script src="controllers/AnimalsController.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" media="screen" charset="utf-8">
   </head>
   <body>
-
+    <div class="container">
+      <div ng-controller="AnimalsCtrl">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Search Animals</h4>
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <input type="text" ng-model="query" class="form-control" placeholder="Search">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h2>New Animal</h2>
+            <form ng-submit="AnimalsFactory.addAnimal()" role="form">
+              <div class="form-group">
+                <label>Animal Name</label>
+                <input type="text" ng-model="AnimalsFactory.animalName" class="form-control" placeholder="Name" required autofocus>
+              </div>
+              <div class="form-group">
+                <label>Animal Type</label>
+                <select ng-model="AnimalsFactory.animalType" class="form-control">
+                  <option selected value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Bird">Bird</option>
+                  <option value="Rabbit">Rabbit</option>
+                  <option value="Pig">Pig</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Animal Age</label>
+                <input type="number" ng-model="AnimalsFactory.animalYears" min="0" max="25" placeholder="0" required>
+                <label>years</label>
+                <input type="number" ng-model="AnimalsFactory.animalMonths" min="0" max="11" placeholder="0" required>
+                <label>months</label>
+              </div>
+              <button type="submit" class="btn btn-warning">Add Animal</button>
+            </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2 ng-show="animals.length && filtered.length">Animal List</h2>
+          <h2 ng-show="animals.length && !filtered.length">No Matches</h2>
+          <ul>
+            <li ng-repeat="item in filtered = (animals | filter:query)">
+              <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}} <label>Age: </label> {{item.years}} years {{item.months}} months
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
