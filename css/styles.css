@@ -1,0 +1,12 @@
+body{
+  background-image: url("img/Miniature-Dachshund.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: 'Indie Flower', cursive;
+}
+
+h1{
+  font-size: 62pt;
+  text-align: center;
+}
