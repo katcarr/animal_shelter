@@ -7,6 +7,7 @@
     <script src="services/AnimalsFactory.js"></script>
     <script src="controllers/AdoptionsController.js"></script>
     <script src="controllers/AnimalsController.js"></script>
+    <script src="controllers/EuthanasiaController.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="css/styles.css" media="screen" charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
@@ -48,18 +49,20 @@
               <input type="number" ng-model="AnimalsFactory.animalMonths" min="0" max="11" placeholder="0" required>
               <label>months</label>
             </div>
-            <button type="submit" class="btn btn-warning">Add Animal</button>
+            <button type="submit" class="btn btn-primary">Add Animal</button>
           </form>
         </div>
         <div class="col-md-6 col-sm-6"></div>
-        <div ng-controller="AdoptionsCtrl"  class="col-md-3 col-sm-3">
+        <div ng-controller="AdoptionsCtrl" class="col-md-3 col-sm-3">
+        <div ng-controller="EuthanasiaCtrl">
             <h2 ng-show="animals.length && filtered.length">Animal List</h2>
             <h2 ng-show="animals.length && !filtered.length">No Matches</h2>
             <ul>
-              <li ng-repeat="item in filtered = (animals | filter:query | filter:{adopted: false})">
+              <li ng-repeat="item in filtered = (animals | filter:query | filter:{adopted: false} | filter:{euthanised: false})">
                 <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}} <br/>
                 <label>Age: </label> {{item.years}} years {{item.months}} months <br/>
                 <a ng-click="addAnimalToAdoptions(item)" class="btn btn-sm btn-success">Adopt</a>
+                <a ng-click="addAnimalToEuthanasia(item)" class="btn btn-sm btn-danger">Euthanise</a>
               </li>
             </ul>
             <div ng-show="adoptedAnimals.length">
@@ -70,6 +73,15 @@
                 </li>
               </ul>
             </div>
+            <div ng-show="euthanisedAnimals.length">
+              <h2>Adopted Animals</h2>
+              <ul>
+                <li ng-repeat="item in euthanisedAnimals = (animals | filter:{euthanised: true})">
+                  <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}}
+                </li>
+              </ul>
+            </div>
+        </div>
         </div>
       </div>
     </div>
