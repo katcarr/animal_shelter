@@ -56,7 +56,7 @@
         <div ng-controller="AdoptionsCtrl" class="col-md-3 col-sm-3">
         <div ng-controller="EuthanasiaCtrl">
             <h2 ng-show="animals.length && filtered.length">Animal List</h2>
-            <h2 ng-show="animals.length && !filtered.length">No Matches</h2>
+            <h2 ng-show="animals.length && !filtered.length && !(adoptedAnimals.length + euthanisedAnimals.length === animals.length)">No Matches</h2>
             <ul>
               <li ng-repeat="item in filtered = (animals | filter:query | filter:{adopted: false} | filter:{euthanised: false})">
                 <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}} <br/>
@@ -74,7 +74,7 @@
               </ul>
             </div>
             <div ng-show="euthanisedAnimals.length">
-              <h2>Adopted Animals</h2>
+              <h2>Pending Pets-in-asia</h2>
               <ul>
                 <li ng-repeat="item in euthanisedAnimals = (animals | filter:{euthanised: true})">
                   <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}}

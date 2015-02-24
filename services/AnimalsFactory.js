@@ -1,6 +1,9 @@
 animalShelter.factory('AnimalsFactory', function AnimalsFactory() {
   var factory = {};
   factory.animals = [{name: "Ron", type: "Dog", years: 1, months: 8, adopted: false, euthanised: false},
+                     {name: "Wron", type: "Rabbit", years: 4, months: 11, adopted: false, euthanised: false},
+                     {name: "R'on", type: "Pig", years: 2, months: 2, adopted: false, euthanised: false},
+                     {name: "Rahn", type: "Dog", years: 10, months: 3, adopted: false, euthanised: false},
                      {name: "Ronald", type: "Cat", years: 9, months: 10, adopted: true, euthanised: false},
                      {name: "Ronnie", type: "Bird", years: 5, months: 0, adopted: false, euthanised: true}];
 

@@ -1,9 +1,10 @@
 body{
-  background-image: url("img/Miniature-Dachshund.jpg");
+  background-image: url("img/IMG_3515.JPG");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   font-family: 'Indie Flower', cursive;
+  color: white;
 }
 
 h1{
