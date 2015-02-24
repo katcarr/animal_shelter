@@ -6,4 +6,9 @@ animalShelter.controller('EuthanasiaCtrl', function EuthanasiaCtrl($scope, Anima
     animal.euthanised = true;
   };
 
+  $scope.removeAnimalFromEuthanasia = function(animal) {
+    animal.euthanised = false;
+  };
+
+
 });

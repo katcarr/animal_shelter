@@ -6,4 +6,8 @@ animalShelter.controller('AdoptionsCtrl', function AdoptionsCtrl($scope, Animals
     animal.adopted = true;
   };
 
+  $scope.removeAnimalFromAdoptions = function(animal) {
+    animal.adopted = false;
+  };
+
 });
