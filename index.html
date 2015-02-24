@@ -1,4 +1,4 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="animalShelter">
   <head>
     <title>Animal Shelter</title>
@@ -51,18 +51,28 @@
             </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row" ng-controller="AdoptionsCtrl">
+        <div class="col-md-6">
           <h2 ng-show="animals.length && filtered.length">Animal List</h2>
           <h2 ng-show="animals.length && !filtered.length">No Matches</h2>
           <ul>
-            <li ng-repeat="item in filtered = (animals | filter:query)">
-              <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}} <label>Age: </label> {{item.years}} years {{item.months}} months
+            <li ng-repeat="item in filtered = (animals | filter:query | filter:{adopted: false})">
+              <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}}
+              <label>Age: </label> {{item.years}} years {{item.months}} months
+              <a ng-click="addAnimalToAdoptions(item)" class="btn btn-sm btn-success">Adopt</a>
             </li>
           </ul>
-          </div>
+        </div>
+        <div class="col-md-6" ng-show="adoptedAnimals.length">
+          <h2>Adopted Animals</h2>
+          <ul>
+            <li ng-repeat="item in adoptedAnimals = (animals | filter:{adopted: true})">
+              <label>Name: </label> {{item.name}} <label>Type: </label> {{item.type}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
   </body>
 </html>
